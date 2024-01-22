@@ -1,14 +1,8 @@
-//@media (max-width: $breakpoint-s) {
-//  .container {
-//    padding: 0 var(--s);
-//  }
-//}
-
 #app {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   font-weight: normal;
+  font-family: Poppins, sans-serif;
 }
 
 *,
@@ -24,6 +18,5 @@ body {
   color: var(--color-text);
   background: var(--color-background);
   line-height: 1.6;
-  font-family: Poppins sans-serif;
   font-size: 15px;
 }

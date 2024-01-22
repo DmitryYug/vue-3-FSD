@@ -1,6 +1,11 @@
 <template>
   <div>
-    <h1>HomePage</h1>
+    <img src="@/shared/assets/banner.png" alt="">
+    <div>
+      <h1>
+        Product Cards
+      </h1>
+    </div>
   </div>
 </template>
 
