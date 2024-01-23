@@ -1,1 +1,1 @@
-export { default as CartIcon } from "./CartIcon.vue"
+export { default as CartIcon } from "./CartIcon.vue";

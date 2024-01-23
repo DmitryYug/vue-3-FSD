@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
-import './styles/index.scss'
-import { AppHeader } from '@/widgets/AppHeader'
+import { RouterView } from "vue-router";
+
+import { AppHeader } from "@/widgets/AppHeader";
+
+import "./styles/index.scss";
 </script>
 
 <template>
-  <AppHeader/>
+  <AppHeader />
   <router-view />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

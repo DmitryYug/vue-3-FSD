@@ -1,5 +1,7 @@
-import App from './App.vue'
-import { router } from '@/app/providers'
-import { createApp } from 'vue'
+import { createApp } from "vue";
 
-export const application = createApp(App).use(router)
+import { router } from "@/app/providers";
+
+import App from "./App.vue";
+
+export const application = createApp(App).use(router);

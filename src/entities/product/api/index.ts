@@ -1,1 +1,1 @@
-export * from "./productListApi"
+export * from "./productListApi";

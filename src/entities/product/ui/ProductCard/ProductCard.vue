@@ -1,7 +1,4 @@
-<script setup lang="ts">
-
-</script>
-
+<script setup lang="ts"></script>
 
 <template>
   <div>
@@ -9,6 +6,4 @@
   </div>
 </template>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

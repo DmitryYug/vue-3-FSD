@@ -1,1 +1,1 @@
-export * from "./ui/ProductPage.vue"
+export * from "./ui/ProductPage.vue";
