@@ -3,10 +3,15 @@ import { ProductList } from "@/entities/product/ui";
 </script>
 
 <template>
-  <div>
-    <img src="@/shared/assets/banner.png" alt="" />
+  <main class="home-wrapper">
+    <img src="@/shared/assets/banner.png" alt="home-banner" />
+    <div class="title-divided">
+      <h1>Products</h1>
+    </div>
     <ProductList />
-  </div>
+  </main>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+@import "styles";
+</style>
