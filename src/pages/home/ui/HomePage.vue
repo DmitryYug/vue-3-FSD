@@ -1,17 +1,14 @@
+<script setup lang="ts">
+
+import { ProductList } from '@/entities/product/ui'
+</script>
+
 <template>
   <div>
     <img src="@/shared/assets/banner.png" alt="">
-    <div>
-      <h1>
-        Product Cards
-      </h1>
-    </div>
+    <ProductList/>
   </div>
 </template>
-
-<script setup lang="ts">
-
-</script>
 
 <style lang="scss">
 

@@ -2,9 +2,10 @@
 
 </script>
 
+
 <template>
   <div>
-    <h1>ProductPage</h1>
+    <span>ProductCard</span>
   </div>
 </template>
 
