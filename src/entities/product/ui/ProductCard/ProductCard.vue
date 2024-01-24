@@ -6,7 +6,10 @@ defineProps<{ product: TProduct }>();
 </script>
 
 <template>
-  <div class="product-card">
+  <router-link
+    :to="`product/${product.id}`"
+    class="product-card"
+  >
     <div class="img-container">
       <img
         :src="getImageByUrl(product.images[0].url)"
@@ -26,7 +29,7 @@ defineProps<{ product: TProduct }>();
         >{{ product.description }}</span
       >
     </div>
-  </div>
+  </router-link>
 </template>
 
 <style lang="scss">

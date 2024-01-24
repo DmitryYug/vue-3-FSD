@@ -13,7 +13,7 @@ export const router = createRouter({
       component: HomePage,
     },
     {
-      path: "/product",
+      path: "/product/:id",
       name: "product",
       component: ProductPage,
     },

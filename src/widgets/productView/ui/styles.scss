@@ -1,0 +1,14 @@
+.product-view {
+  display: flex;
+  padding: 0 190px 140px 190px;
+  gap: 160px;
+  &-slider {
+  }
+  &-description {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+}
+
