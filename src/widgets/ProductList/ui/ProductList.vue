@@ -20,7 +20,11 @@ const loading = useStore($loading);
     <SpinnerIcon v-if="loading" />
     <div v-else>
       <div class="product-list-wrapper">
-        <ProductCard v-for="product in productList" :key="product.id" :product="product" />
+        <ProductCard
+          v-for="product in productList"
+          :key="product.id"
+          :product="product"
+        />
       </div>
       <div class="pagination-wrapper">
         <ThePagination />

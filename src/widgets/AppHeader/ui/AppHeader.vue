@@ -8,7 +8,12 @@ import { CartIcon, LogoIcon } from "@/shared/assets";
       <LogoIcon />
     </div>
     <div class="navbar">
-      <router-link to="/" class="home"> Home </router-link>
+      <router-link
+        to="/"
+        class="home"
+      >
+        Home
+      </router-link>
       <router-link to="/cart">
         <CartIcon />
       </router-link>

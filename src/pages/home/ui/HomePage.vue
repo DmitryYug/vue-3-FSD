@@ -4,7 +4,10 @@ import { ProductList } from "@/widgets/ProductList";
 
 <template>
   <main class="home-wrapper">
-    <img src="@/shared/assets/banner.png" alt="home-banner" />
+    <img
+      src="@/shared/assets/banner.png"
+      alt="home-banner"
+    />
     <div class="title-divided">
       <h1>Products</h1>
     </div>
