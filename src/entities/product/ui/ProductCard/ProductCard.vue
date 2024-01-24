@@ -25,7 +25,7 @@ defineProps<{ product: TProduct }>();
       <span class="bold-text">${{ Math.floor(product.min_price) }}</span>
       <span
         :title="product.description"
-        class="text"
+        class="text-trimmed"
         >{{ product.description }}</span
       >
     </div>

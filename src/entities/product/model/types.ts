@@ -30,6 +30,7 @@ export type TProduct = {
   title: string;
   description: string;
   images: { title: string; url: string }[];
+  discount_price: number;
   min_price: number;
   max_price: number;
   variants: TVariant[];

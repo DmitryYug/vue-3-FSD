@@ -21,19 +21,19 @@ const product = useStore($product);
 </script>
 
 <template>
-  <div class="product-view">
-    <div
-      class="product-view-slider"
-      v-if="product"
-    >
+  <div
+    class="product-view"
+    v-if="product"
+  >
+    <div class="product-view-slider">
       <ProductViewSlider :images="product.images" />
     </div>
     <div class="product-view-description">
-      <Badge />
-      <TheTitle />
-      <span>$price</span>
-      <p>
-        {{ product?.description }}
+      <Badge :badge-text="product.discount_price || 'NEW'" />
+      <span class="bold-text">{{ product.title }}</span>
+      <span class="bold-text">${{ Math.floor(product.max_price) }}</span>
+      <p class="text">
+        {{ product.description }}
       </p>
       <ProductViewControls />
     </div>
