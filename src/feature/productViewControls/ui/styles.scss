@@ -1,0 +1,12 @@
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  &-item {
+    display: flex;
+    gap: 10px;
+  }
+}
+.p-dropdown {
+  width: 100%;
+}

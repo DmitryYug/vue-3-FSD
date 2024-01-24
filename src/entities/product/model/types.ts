@@ -1,3 +1,8 @@
+export enum EAttributeType {
+  COLOR = "COLOR",
+  TEXT = "TEXT",
+}
+
 export enum EColor {
   GREEN = "green",
   BLUE = "blue",
@@ -9,20 +14,27 @@ export enum ESize {
   MEDIUM = "medium",
   LARGE = "large",
 }
+export type TVariantLabel = { attribute_id: string; label_id: string };
 
 export type TVariant = {
   id: string;
   title: string;
   image: { title: string; url: string };
-  labels: { attribute_id: string; label_id: string }[];
+  labels: TVariantLabel[];
   price: number;
+};
+
+export type TAttributeLabel = {
+  id: string;
+  title: string;
+  data: string;
 };
 
 export type TAttribute = {
   id: string;
   title: string;
-  type: "COLOR" | "TEXT";
-  labels: { id: string; title: string; data: string }[];
+  type: EAttributeType;
+  labels: TAttributeLabel[];
 };
 
 export type TProduct = {

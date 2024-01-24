@@ -15,6 +15,7 @@ module.exports = {
   },
   plugins: ["@typescript-eslint", "simple-import-sort", "import", "unused-imports", "effector", "prettier"],
   rules: {
+    'vue/multi-word-component-names': 'off',
     "prettier/prettier": [
       "warn",
       {

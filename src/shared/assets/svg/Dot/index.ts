@@ -1,1 +1,1 @@
-export { default as DotSlider } from "./DotSlider.vue";
+export { default as DotIcon } from "./DotIcon.vue";

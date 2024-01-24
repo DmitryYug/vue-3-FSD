@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-import { DotSlider } from "@/shared/assets";
+import { DotIcon } from "@/shared/assets";
 
 const props = defineProps<{ dotsLength: number; activeDot: number }>();
 
@@ -16,7 +16,7 @@ const computeDots = computed(() => {
 
 <template>
   <button class="dots-wrapper">
-    <DotSlider
+    <DotIcon
       v-for="dot in computeDots"
       :key="dot"
       :is-active="dot === activeDot"

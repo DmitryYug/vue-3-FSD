@@ -5,7 +5,7 @@ import { useStore } from "effector-vue/composition";
 
 import { ProductViewControls } from "@/feature/productViewControls";
 import { ProductViewSlider } from "@/feature/productViewSlider";
-import { Badge, TheTitle } from "@/shared/ui";
+import { Badge } from "@/shared/ui";
 import { $product, getProductInfo } from "@/widgets/productView/model";
 
 const { currentRoute } = useRouter();
@@ -35,7 +35,7 @@ const product = useStore($product);
       <p class="text">
         {{ product.description }}
       </p>
-      <ProductViewControls />
+      <ProductViewControls :product="product" />
     </div>
   </div>
 </template>

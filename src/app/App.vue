@@ -4,6 +4,7 @@ import { RouterView, useRoute } from "vue-router";
 import { AppHeader } from "@/widgets/appHeader";
 
 import "./styles/index.scss";
+import "primevue/resources/themes/aura-light-green/theme.css";
 
 const route = useRoute();
 
