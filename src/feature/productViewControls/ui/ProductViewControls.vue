@@ -3,7 +3,7 @@ import { useStore } from "effector-vue/composition";
 import type { DropdownChangeEvent } from "primevue/dropdown";
 
 import { type TProduct } from "@/entities/product";
-import { DeleteIcon } from "@/shared/assets";
+import { DeleteIcon, Minus, Plus } from "@/shared/assets";
 import { Badge } from "@/shared/ui";
 import {
   $availableVariants,
@@ -28,6 +28,7 @@ const availableVariants = useStore($availableVariants);
     >
       <div class="controls-item">
         <Dropdown
+          panel-class="dropdown-panel"
           optionLabel="title"
           :model-value="chosenLabel"
           :options="attribute.labels"
@@ -70,6 +71,21 @@ const availableVariants = useStore($availableVariants);
         </button>
       </div>
     </div>
+    <InputNumber
+      class="controls-quantity"
+      inputId="horizontal-buttons"
+      showButtons
+      buttonLayout="horizontal"
+      :step="1"
+    >
+      <template #incrementbuttonicon>
+        <Plus />
+      </template>
+      <template #decrementbuttonicon>
+        <Minus />
+      </template>
+    </InputNumber>
+    <button class="controls-add">Add to Cart</button>
   </div>
 </template>
 

@@ -5,3 +5,5 @@ export * from "./Spinner";
 export * from "./ArrowLeft";
 export * from "./ArrowRight";
 export * from "./Delete";
+export * from "./Minus";
+export * from "./Plus";

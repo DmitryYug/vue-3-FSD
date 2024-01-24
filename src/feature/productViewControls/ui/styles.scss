@@ -7,10 +7,30 @@
     gap: 10px;
     margin-bottom: 10px;
   }
+  &-quantity {
+    padding: 8px 16px;
+    background-color: var(--color-background);
+    width: fit-content;
+  }
+  &-add {
+    background-color: var(--col-blue);
+    font-size: 18px;
+    color: var(--col-white);
+    line-height: 27px;
+    padding: 12px 24px;
+    border-radius: 50px;
+    width: fit-content;
+  }
 }
 
 .p-dropdown {
   width: 100%;
+  padding: 8px 16px;
+  border-radius: 10px
+}
+
+.dropdown-panel {
+  padding: 8px;
 }
 
 .variants-wrapper {
