@@ -8,7 +8,7 @@ import { useScreenWidth } from "@/shared/lib";
 
 const { screenWidth } = useScreenWidth();
 const isScreenTablet = computed(() => {
-  return screenWidth.value < TABLET_WIDTH;
+  return screenWidth.value <= TABLET_WIDTH;
 });
 </script>
 

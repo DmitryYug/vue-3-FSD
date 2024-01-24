@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{ badgeText: string; size?: "small"; isOpacity: boolean }>();
+defineProps<{ badgeText: string; size?: "small"; isOpacity?: boolean }>();
 </script>
 
 <template>

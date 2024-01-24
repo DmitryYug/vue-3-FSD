@@ -25,7 +25,7 @@ const product = useStore($product);
     class="product-view"
     v-if="product"
   >
-    <div class="product-view-slider">
+    <div>
       <ProductViewSlider :images="product.images" />
     </div>
     <div class="product-view-description">

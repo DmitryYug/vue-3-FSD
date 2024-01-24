@@ -1,13 +1,21 @@
+@import '@/app/styles/index.scss';
+
 .product-view {
   display: flex;
-  padding: 0 190px 140px 190px;
-  gap: 160px;
-  &-slider {
+  gap: 50px;
+  @media screen and (max-width: $tablet) {
+    flex-direction: column;
+    align-items: center;
   }
   &-description {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    @media screen and (max-width: $tablet) {
+     background-color: #FFFFFF !important;
+      border-radius: 50px;
+      padding: 20px;
+    }
   }
 
 }
