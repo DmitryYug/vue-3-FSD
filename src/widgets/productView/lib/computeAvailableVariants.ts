@@ -1,7 +1,7 @@
 import type { TAttributeLabel, TProduct, TVariantLabel } from "@/entities/product";
 
 export const computeAvailableVariants = (product: TProduct | null, chosenLabel: TAttributeLabel | null) => {
-  const res: Record<number, number[]> = {};
+  const res: Record<string, string[]> = {};
   if (product && chosenLabel) {
     const { variants } = product;
     const allLabels: TVariantLabel[] = [];

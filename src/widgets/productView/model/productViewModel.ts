@@ -12,11 +12,12 @@ export const setChosenAttribute = createEvent<TAttribute | null>();
 export const $product = createStore<TProduct | null>(null);
 export const $chosenLabel = createStore<TAttributeLabel | null>(null);
 export const $chosenAttribute = createStore<TAttribute | null>(null);
-export const $availableVariants = createStore<Record<number, number[]> | null>(null);
+export const $availableVariants = createStore<Record<string, string[]> | null>(null);
 
 $product.on(getProductInfoFx.doneData, (_, payload) => payload.data.data);
 $chosenLabel.on(setChosenLabel, (_, payload) => payload);
 $chosenAttribute.on(setChosenAttribute, (_, payload) => payload);
+
 sample({
   clock: getProductInfo,
   target: getProductInfoFx,

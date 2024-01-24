@@ -5,8 +5,15 @@
   &-item {
     display: flex;
     gap: 10px;
+    margin-bottom: 10px;
   }
 }
+
 .p-dropdown {
   width: 100%;
+}
+
+.variants-wrapper {
+  display: flex;
+  gap: 5px;
 }

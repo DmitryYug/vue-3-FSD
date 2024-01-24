@@ -4,6 +4,7 @@ import type { DropdownChangeEvent } from "primevue/dropdown";
 
 import { type TProduct } from "@/entities/product";
 import { DeleteIcon } from "@/shared/assets";
+import { Badge } from "@/shared/ui";
 import {
   $availableVariants,
   $chosenAttribute,
@@ -51,8 +52,22 @@ const availableVariants = useStore($availableVariants);
           <DeleteIcon v-if="chosenAttribute.id === attribute.id" />
         </button>
       </div>
-      <div v-if="chosenLabel && availableVariants && availableVariants[attribute.id]">
-        {{ attribute.labels.filter(label => availableVariants[attribute.id].includes(label.id)) }}
+      <div
+        v-if="chosenLabel && availableVariants && availableVariants[attribute.id]"
+        class="variants-wrapper"
+      >
+        <button
+          v-for="availableAttribute in attribute.labels.filter(
+            label => availableVariants && availableVariants[attribute.id].includes(label.id)
+          )"
+          :key="availableAttribute.title"
+        >
+          <Badge
+            size="small"
+            :badge-text="availableAttribute.title"
+            is-opacity
+          />
+        </button>
       </div>
     </div>
   </div>
