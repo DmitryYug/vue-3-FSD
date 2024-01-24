@@ -1,1 +1,1 @@
-export * from "./SpinnerLoader.vue";
+export { default as SpinnerIcon } from "./SpinnerIcon.vue";

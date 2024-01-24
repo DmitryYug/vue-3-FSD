@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ProductList } from "@/entities/product/ui";
+import { ProductList } from "@/widgets/ProductList";
 </script>
 
 <template>
