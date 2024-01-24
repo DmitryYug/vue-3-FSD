@@ -1,7 +1,7 @@
 import { createEffect, createEvent, createStore, sample } from "effector";
 
 import type { TProduct } from "@/entities/product";
-import { getProductListApi } from "@/widgets/ProductList";
+import { getProductListApi } from "@/widgets/productList";
 
 export const getProductListFx = createEffect(() => getProductListApi());
 

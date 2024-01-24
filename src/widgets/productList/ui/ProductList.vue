@@ -3,9 +3,9 @@ import { onMounted } from "vue";
 import { useStore } from "effector-vue/composition";
 
 import { ProductCard } from "@/entities/product";
-import { ThePagination } from "@/features/pagination";
+import { ThePagination } from "@/feature/pagination";
 import { SpinnerIcon } from "@/shared/assets";
-import { $loading, $productList, getProductList } from "@/widgets/ProductList";
+import { $loading, $productList, getProductList } from "@/widgets/productList";
 
 onMounted(() => {
   getProductList();

@@ -1,8 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ProductView } from "@/widgets/productView";
+</script>
 
 <template>
   <div>
-    <h1>ProductPage</h1>
+    <ProductView />
   </div>
 </template>
 
