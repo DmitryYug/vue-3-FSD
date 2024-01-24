@@ -18,17 +18,18 @@ const loading = useStore($loading);
 <template>
   <div>
     <SpinnerIcon v-if="loading" />
-    <div v-else>
-      <div class="product-list-wrapper">
-        <ProductCard
-          v-for="product in productList"
-          :key="product.id"
-          :product="product"
-        />
-      </div>
-      <div class="pagination-wrapper">
-        <ThePagination />
-      </div>
+    <div
+      v-else
+      class="product-list-wrapper"
+    >
+      <ProductCard
+        v-for="product in productList"
+        :key="product.id"
+        :product="product"
+      />
+    </div>
+    <div class="pagination-wrapper">
+      <ThePagination />
     </div>
   </div>
 </template>

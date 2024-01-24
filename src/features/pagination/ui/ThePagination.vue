@@ -5,7 +5,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@/shared/assets";
 
 const pages = computed(() => {
   const res = [];
-  for (let i = 1; i < 10; i++) {
+  for (let i = 1; i <= 5; i++) {
     res.push(i);
   }
   return res;

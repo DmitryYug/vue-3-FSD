@@ -1,9 +1,16 @@
+@import '@/app/styles/index.scss';
+
 .product-card {
   width: 220px;
   height: 347px;
   display: flex;
   flex-direction: column;
   gap: 25px;
+  @media screen and (max-width: $tablet) {
+    width: 148px;
+    height: 267px;
+    gap: 15px;
+  }
 }
 
 .img-container {
@@ -31,6 +38,10 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  @media screen and (max-width: $tablet) {
+    font-size: 16px;
+    line-height: 24px;
+  }
 }
 
 .text {

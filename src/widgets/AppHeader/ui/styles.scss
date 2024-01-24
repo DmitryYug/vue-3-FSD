@@ -1,15 +1,33 @@
+@import '@/app/styles/index.scss';
+
 .header-container {
   display: flex;
   justify-content: space-between;
   align-content: center;
   padding: 37px 190px;
+  @media screen and (max-width: $tablet) {
+    padding: 32px;
+  }
 }
+
+.logo {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
 .navbar {
   display: flex;
   gap: 40px;
 }
+
 .home {
   font-size: 20px;
   font-weight: 500;
   line-height: 30px;
+  @media screen and (max-width: $tablet) {
+    display: none;
+  }
 }
+
+

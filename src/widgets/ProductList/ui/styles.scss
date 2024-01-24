@@ -1,10 +1,17 @@
+@import '@/app/styles/index.scss';
+
 .product-list-wrapper {
   display: flex;
   gap: 32px;
   max-width: 976px;
   flex-wrap: wrap;
   margin: 0 auto;
+  justify-content: center;
+  @media screen and (max-width: $tablet) {
+    gap: 15px;
+  }
 }
+
 .pagination-wrapper {
   display: flex;
   justify-content: center;

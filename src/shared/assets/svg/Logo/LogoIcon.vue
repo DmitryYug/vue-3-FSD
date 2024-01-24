@@ -1,7 +1,11 @@
+<script setup lang="ts">
+defineProps<{ view: string }>();
+</script>
+
 <template>
   <svg
-    width="190"
-    height="32"
+    :width="view === 's' ? 147 : 190"
+    :height="view === 's' ? 24 : 32"
     viewBox="0 0 190 32"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
