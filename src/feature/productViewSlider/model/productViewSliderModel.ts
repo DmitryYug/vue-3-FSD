@@ -1,13 +1,7 @@
 import { createEvent, createStore, sample } from "effector";
 
-import {
-  $chosenAttribute,
-  $chosenLabel,
-  $product,
-  EAttributeType,
-  setChosenAttribute,
-  setChosenLabel,
-} from "@/entities/product";
+import { $product, EAttributeType } from "@/entities/product";
+import { $chosenAttribute, $chosenLabel, setChosenAttribute, setChosenLabel } from "@/feature/productViewControls";
 
 import { computeActiveSliderIndex } from "../lib";
 

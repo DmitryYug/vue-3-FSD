@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { computed, onUnmounted } from "vue";
 import { useStore } from "effector-vue/composition";
 import type { DropdownChangeEvent } from "primevue/dropdown";
 
-import { type TProduct } from "@/entities/product";
+import { type TAttribute, type TAttributeLabel, type TProduct } from "@/entities/product";
 import {
   $availableVariants,
   $chosenAttribute,
@@ -15,11 +16,12 @@ import {
   setChosenLabel,
   setLabelIdForVariantCheck,
   setQuantity,
-} from "@/entities/product";
+  setVariant,
+} from "@/feature/productViewControls";
 import { DeleteIcon } from "@/shared/assets";
-import { Badge, QuantityInput, TheButton } from "@/shared/ui";
+import { QuantityInput, TheButton } from "@/shared/ui";
 
-const { product, clearData } = defineProps<{ product: TProduct; clearData: () => void }>();
+const { product } = defineProps<{ product: TProduct }>();
 
 const chosenLabel = useStore($chosenLabel);
 const chosenAttribute = useStore($chosenAttribute);
@@ -27,6 +29,32 @@ const availableVariants = useStore($availableVariants);
 const labelIdsForVariantCheck = useStore($labelIdsForVariantCheck);
 const chosenVariant = useStore($chosenVariant);
 const quantity = useStore($quantity);
+
+onUnmounted(() => {
+  clearData();
+});
+
+const clearData = () => {
+  setChosenAttribute(null);
+  setChosenLabel(null);
+  setVariant(null);
+  setQuantity(0);
+};
+
+const computeModelValue = (attribute: TAttribute) => {
+  if (chosenLabel.value && labelIdsForVariantCheck.value) {
+    const { value: attributeValue } = chosenAttribute;
+    const { value: labelsToCheck } = labelIdsForVariantCheck;
+    if (attributeValue) {
+      console.log(attribute.id === attributeValue.id ? chosenLabel : labelsToCheck[attribute.id]);
+      return attribute.id === attributeValue.id ? chosenLabel.value : labelsToCheck[attribute.id];
+    }
+  }
+};
+
+const computeErrorMessage = computed(() => {
+  return chosenVariant.value && Object.keys(chosenVariant.value).length === 1 ? chosenVariant.value?.title : "";
+});
 </script>
 
 <template>
@@ -39,13 +67,23 @@ const quantity = useStore($quantity);
         <Dropdown
           panel-class="dropdown-panel"
           optionLabel="title"
-          :model-value="chosenLabel"
+          :model-value="computeModelValue(attribute)"
           :options="attribute.labels"
           :placeholder="`Select ${attribute.title}`"
+          :option-disabled="
+            (option: TAttributeLabel) =>
+              availableVariants &&
+              availableVariants[attribute.id] &&
+              !availableVariants[attribute.id].includes(option.id)
+          "
           @change="
             (event: DropdownChangeEvent) => {
-              setChosenAttribute(attribute);
-              setChosenLabel(event.value);
+              if (!chosenAttribute) {
+                setChosenAttribute(attribute);
+                setChosenLabel(event.value);
+              } else {
+                setLabelIdForVariantCheck({ attributeId: attribute.id, label: event.value });
+              }
             }
           "
         />
@@ -59,29 +97,15 @@ const quantity = useStore($quantity);
       <div
         v-if="chosenLabel && availableVariants && availableVariants[attribute.id]"
         class="variants-wrapper"
-      >
-        <button
-          v-for="availableLabel in attribute.labels.filter(
-            label => availableVariants && availableVariants[attribute.id].includes(label.id)
-          )"
-          :key="availableLabel.title"
-          @click="() => setLabelIdForVariantCheck({ attributeId: attribute.id, labelId: availableLabel.id })"
-        >
-          <Badge
-            v-if="labelIdsForVariantCheck"
-            size="small"
-            :badge-text="availableLabel.title"
-            :is-opacity="
-              chosenLabel.id === availableLabel.id || labelIdsForVariantCheck[attribute.id] === availableLabel.id
-            "
-          />
-        </button>
-      </div>
+      ></div>
     </div>
     <QuantityInput
       :model="quantity"
       :on-change="setQuantity"
     />
+    <span class="error">
+      {{ computeErrorMessage }}
+    </span>
     <TheButton
       :on-click="addToCart"
       :disabled="!chosenVariant || quantity === 0"

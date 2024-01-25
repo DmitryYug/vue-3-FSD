@@ -1,32 +1,13 @@
 <script setup lang="ts">
-import { onUnmounted } from "vue";
 import { useStore } from "effector-vue/composition";
 
-import {
-  $chosenVariant,
-  $product,
-  setChosenAttribute,
-  setChosenLabel,
-  setQuantity,
-  setVariant,
-} from "@/entities/product";
-import { ProductViewControls } from "@/feature/productViewControls";
+import { $product } from "@/entities/product";
+import { $chosenVariant, ProductViewControls } from "@/feature/productViewControls";
 import { ProductViewSlider } from "@/feature/productViewSlider";
 import { Badge } from "@/shared/ui";
 
-onUnmounted(() => {
-  clearData();
-});
-
 const product = useStore($product);
 const chosenVariant = useStore($chosenVariant);
-
-const clearData = () => {
-  setChosenAttribute(null);
-  setChosenLabel(null);
-  setVariant(null);
-  setQuantity(0);
-};
 </script>
 
 <template>
@@ -46,10 +27,7 @@ const clearData = () => {
       <p class="text">
         {{ product.description }}
       </p>
-      <ProductViewControls
-        :product="product"
-        :clear-data="clearData"
-      />
+      <ProductViewControls :product="product" />
     </div>
   </div>
 </template>

@@ -1,20 +1,22 @@
-import type { TProduct, TVariant } from "@/entities/product";
+import type { TAttributeLabel, TProduct, TVariant } from "@/entities/product";
 
 export const computeVariant = (payload: {
   product: TProduct | null;
-  chosenAttributes: Record<string, string> | null;
+  chosenAttributes: Record<string, TAttributeLabel> | null;
 }): TVariant | null => {
   const { product, chosenAttributes } = payload;
   if (product && chosenAttributes) {
     let result: TVariant | null = null;
-    const chosenCombination = Object.values(chosenAttributes).sort();
+    const chosenCombination = Object.values(chosenAttributes)
+      .map(label => label.id)
+      .sort();
     product.variants.forEach(variant => {
       const currentCombination = variant.labels.map(label => label.label_id).sort();
       if (arraysAreEqual(chosenCombination, currentCombination)) {
         result = variant;
       }
     });
-    return result;
+    return result ? result : ({ title: "Bad data from server, choose another options please" } as TVariant);
   } else {
     return null;
   }
