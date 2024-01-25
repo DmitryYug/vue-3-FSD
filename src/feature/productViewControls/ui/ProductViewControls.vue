@@ -37,7 +37,6 @@ const quantity = useStore($quantity);
     >
       <div class="controls-item">
         <Dropdown
-          show-clear
           panel-class="dropdown-panel"
           optionLabel="title"
           :model-value="chosenLabel"

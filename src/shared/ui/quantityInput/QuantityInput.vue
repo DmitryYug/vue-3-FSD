@@ -12,7 +12,7 @@ const inputStyle = {
 
 <template>
   <InputNumber
-    min="0"
+    :min="0"
     :model-value="model"
     class="control-quantity"
     inputId="horizontal-buttons"

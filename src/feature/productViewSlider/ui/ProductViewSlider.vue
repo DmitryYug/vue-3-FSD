@@ -1,12 +1,19 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import { useStore } from "effector-vue/composition";
 
 import { type TProduct } from "@/entities/product";
-import { $activeIndex, setActive, TheDots } from "@/feature/productViewSlider";
+import { $activeIndex, sliderDotOnClick, TheDots } from "@/feature/productViewSlider";
 import { getImageByUrl } from "@/shared/api";
 
 const { product } = defineProps<{ product: TProduct }>();
 const active = useStore($activeIndex);
+const noImageMessage = computed(() => {
+  if (active.value === 0) {
+    return "";
+  }
+  return active.value === -1 ? "Wrong server image title" : "";
+});
 </script>
 
 <template>
@@ -23,10 +30,13 @@ const active = useStore($activeIndex);
         />
       </transition>
     </div>
+    <span class="error">
+      {{ noImageMessage }}
+    </span>
     <TheDots
       :dots-length="product.images.length"
       :active-dot="active"
-      @setActiveDot="setActive"
+      @setActiveDot="sliderDotOnClick"
     />
   </div>
 </template>

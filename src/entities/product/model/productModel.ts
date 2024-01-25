@@ -32,8 +32,14 @@ export const $chosenVariant = createStore<TVariant | null>(null);
 export const $quantity = createStore<number>(0);
 
 $product.on(getProductInfoFx.doneData, (_, payload) => payload.data.data);
-$chosenLabel.on(setChosenLabel, (_, payload) => payload);
-$chosenAttribute.on(setChosenAttribute, (_, payload) => payload);
+$chosenLabel.on(setChosenLabel, (_, payload) => {
+  console.log("$chosenLabel:", payload);
+  return payload;
+});
+$chosenAttribute.on(setChosenAttribute, (_, payload) => {
+  console.log("$chosenAttribute:", payload);
+  return payload;
+});
 $chosenVariant.on(setVariant, (_, payload) => payload && computeVariant(payload));
 $quantity.on(setQuantity, (_, payload) => payload);
 

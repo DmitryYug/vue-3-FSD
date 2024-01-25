@@ -11,11 +11,12 @@ import {
 
 import { computeActiveSliderIndex } from "../lib";
 
-export const setActive = createEvent();
+export const setActiveSliderIndex = createEvent();
+export const sliderDotOnClick = createEvent<number>();
 
 export const $activeIndex = createStore<number>(0);
 
-$activeIndex.on(setActive, (_, payload) => payload);
+$activeIndex.on(sliderDotOnClick, (_, payload) => payload);
 
 $product.watch(product => {
   if (product) {
@@ -23,14 +24,26 @@ $product.watch(product => {
     if (initialValue) {
       setChosenAttribute(initialValue);
       setChosenLabel(initialValue.labels[0]);
-      setActive();
+      setActiveSliderIndex();
     }
   }
 });
 
 sample({
-  clock: setActive,
+  clock: setActiveSliderIndex,
   source: { product: $product, chosenLabel: $chosenLabel, chosenAttribute: $chosenAttribute },
   fn: computeActiveSliderIndex,
   target: $activeIndex,
+});
+
+sample({
+  clock: setChosenLabel,
+  source: $chosenAttribute,
+  filter: attribute => {
+    if (attribute) {
+      return attribute.type === EAttributeType.COLOR;
+    }
+    return false;
+  },
+  target: setActiveSliderIndex,
 });

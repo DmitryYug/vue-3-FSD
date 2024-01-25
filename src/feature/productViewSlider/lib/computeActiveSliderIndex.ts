@@ -14,7 +14,6 @@ export const computeActiveSliderIndex = ({ product, chosenLabel, chosenAttribute
       const colorAttributeTitle = getColorFromImageTitle(img.title)
         .replace(/[^a-zA-Z]/g, "")
         .toLowerCase();
-      console.log(labelTitle, colorAttributeTitle);
       return labelTitle.includes(colorAttributeTitle) || colorAttributeTitle.includes(labelTitle);
     });
   }
