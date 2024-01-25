@@ -26,7 +26,10 @@ const isScreenTablet = computed(() => {
         Home
       </router-link>
       <router-link to="/cart">
-        <CartIcon />
+        <CartIcon
+          :height="17"
+          :width="22"
+        />
       </router-link>
     </div>
   </div>

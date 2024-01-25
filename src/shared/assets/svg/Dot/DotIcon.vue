@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{ isActive: boolean }>();
+defineProps<{ fillColor?: string }>();
 </script>
 
 <template>
@@ -15,7 +15,7 @@ defineProps<{ isActive: boolean }>();
       cy="8"
       r="7.5"
       stroke="#474747"
-      :fill="isActive ? '#474747' : ''"
+      :fill="fillColor"
     />
   </svg>
 </template>

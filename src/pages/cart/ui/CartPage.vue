@@ -1,8 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import CartItemsList from "@/widgets/cartItemList/ui/CartList.vue";
+</script>
 
 <template>
   <div>
-    <h1>CartPage</h1>
+    <CartItemsList />
   </div>
 </template>
 

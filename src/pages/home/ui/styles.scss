@@ -7,27 +7,6 @@ main {
   align-content: center;
 }
 
-h1 {
-  font-size: 48px;
-  font-weight: 700;
-  line-height: 72px;
-  position: absolute;
-  @media screen and (max-width: $tablet) {
-    font-size: 32px;
-    line-height: 48px;
-  }
-}
-
-h1::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: var(--col-grey);
-}
-
 .title-divided {
   margin-bottom: 65px;
   display: flex;

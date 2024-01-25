@@ -1,19 +1,3 @@
-export enum EAttributeType {
-  COLOR = "COLOR",
-  TEXT = "TEXT",
-}
-
-export enum EColor {
-  GREEN = "green",
-  BLUE = "blue",
-  RED = "red",
-}
-
-export enum ESize {
-  SMALL = "small",
-  MEDIUM = "medium",
-  LARGE = "large",
-}
 export type TVariantLabel = { attribute_id: string; label_id: string };
 
 export type TVariant = {
@@ -33,7 +17,7 @@ export type TAttributeLabel = {
 export type TAttribute = {
   id: string;
   title: string;
-  type: EAttributeType;
+  type: string;
   labels: TAttributeLabel[];
 };
 

@@ -19,7 +19,7 @@ const computeDots = computed(() => {
     <DotIcon
       v-for="dot in computeDots"
       :key="dot"
-      :is-active="dot === activeDot"
+      :fill-color="dot === activeDot ? '#474747' : ''"
       @click="$emit('setActiveDot', dot)"
     />
   </button>

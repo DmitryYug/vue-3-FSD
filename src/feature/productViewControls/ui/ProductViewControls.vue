@@ -3,24 +3,30 @@ import { useStore } from "effector-vue/composition";
 import type { DropdownChangeEvent } from "primevue/dropdown";
 
 import { type TProduct } from "@/entities/product";
-import { DeleteIcon, Minus, Plus } from "@/shared/assets";
-import { Badge } from "@/shared/ui";
+import { DeleteIcon } from "@/shared/assets";
+import { Badge, QuantityInput } from "@/shared/ui";
 import {
   $availableVariants,
   $chosenAttribute,
   $chosenLabel,
+  $chosenVariant,
   $labelIdsForVariantCheck,
+  $quantity,
+  addToCart,
   setChosenAttribute,
   setChosenLabel,
   setLabelIdForVariantCheck,
+  setQuantity,
 } from "@/widgets/productView";
 
-const { product } = defineProps<{ product: TProduct }>();
+const { product, clearData } = defineProps<{ product: TProduct; clearData: () => void }>();
 
 const chosenLabel = useStore($chosenLabel);
 const chosenAttribute = useStore($chosenAttribute);
 const availableVariants = useStore($availableVariants);
 const labelIdsForVariantCheck = useStore($labelIdsForVariantCheck);
+const chosenVariant = useStore($chosenVariant);
+const quantity = useStore($quantity);
 </script>
 
 <template>
@@ -46,12 +52,7 @@ const labelIdsForVariantCheck = useStore($labelIdsForVariantCheck);
         />
         <button
           v-if="chosenAttribute"
-          @click="
-            () => {
-              setChosenAttribute(null);
-              setChosenLabel(null);
-            }
-          "
+          @click="clearData"
         >
           <DeleteIcon v-if="chosenAttribute.id === attribute.id" />
         </button>
@@ -78,21 +79,17 @@ const labelIdsForVariantCheck = useStore($labelIdsForVariantCheck);
         </button>
       </div>
     </div>
-    <InputNumber
-      class="controls-quantity"
-      inputId="horizontal-buttons"
-      showButtons
-      buttonLayout="horizontal"
-      :step="1"
+    <QuantityInput
+      :model="quantity"
+      :on-change="setQuantity"
+    />
+    <button
+      class="controls-add"
+      :disabled="!chosenVariant || quantity === 0"
+      @click="() => addToCart()"
     >
-      <template #incrementbuttonicon>
-        <Plus />
-      </template>
-      <template #decrementbuttonicon>
-        <Minus />
-      </template>
-    </InputNumber>
-    <button class="controls-add">Add to Cart</button>
+      Add to Cart
+    </button>
   </div>
 </template>
 
