@@ -4,7 +4,7 @@ import type { DropdownChangeEvent } from "primevue/dropdown";
 
 import { type TProduct } from "@/entities/product";
 import { DeleteIcon } from "@/shared/assets";
-import { Badge, QuantityInput } from "@/shared/ui";
+import { Badge, QuantityInput, TheButton } from "@/shared/ui";
 import {
   $availableVariants,
   $chosenAttribute,
@@ -83,13 +83,11 @@ const quantity = useStore($quantity);
       :model="quantity"
       :on-change="setQuantity"
     />
-    <button
-      class="controls-add"
+    <TheButton
+      :on-click="addToCart"
       :disabled="!chosenVariant || quantity === 0"
-      @click="() => addToCart()"
-    >
-      Add to Cart
-    </button>
+      title="Add to Cart"
+    />
   </div>
 </template>
 

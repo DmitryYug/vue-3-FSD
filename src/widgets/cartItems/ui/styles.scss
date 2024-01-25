@@ -1,5 +1,9 @@
 @import '@/app/styles/index.scss';
 
+.list {
+  width: 100%;
+}
+
 .list-item {
   display: flex;
   gap: 32px;
@@ -42,13 +46,12 @@
   flex-direction: column;
   h2 {
     font-size: 28px;
+    text-align: center;
   }
 }
 
-
-
 td, th {
-  padding: 32px 32px;
+  padding: 24px 24px;
 }
 
 th {

@@ -3,10 +3,12 @@ import { useStore } from "effector-vue/composition";
 
 import { CartIcon, DeleteIcon } from "@/shared/assets";
 import { QuantityInput } from "@/shared/ui";
-import { $cartItems } from "@/widgets/cartItemList";
-import ProductTableItem from "@/widgets/cartItemList/ui/ProductTableItem.vue";
+import { $cartItems } from "@/widgets/cartItems";
+
+import ProductTableItem from "./ProductTableItem.vue";
 
 const cartItems = useStore($cartItems);
+
 // const cartItems = [
 //   {
 //     id: "LercRv4o",
@@ -87,7 +89,6 @@ const cartItems = useStore($cartItems);
 </script>
 <template>
   <div class="list">
-    <h1>My cart</h1>
     <table v-if="cartItems">
       <tr>
         <th>PRODUCT</th>
@@ -106,7 +107,7 @@ const cartItems = useStore($cartItems);
         <td>
           <QuantityInput
             :on-change="() => {}"
-            :model="0"
+            :model="item.quantity"
           />
         </td>
         <td>

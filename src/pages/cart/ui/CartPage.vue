@@ -1,11 +1,18 @@
 <script setup lang="ts">
-import CartItemsList from "@/widgets/cartItemList/ui/CartList.vue";
+import { CartList } from "@/widgets/cartItems";
+import { CartSummary } from "@/widgets/cartSummary";
 </script>
 
 <template>
   <div>
-    <CartItemsList />
+    <h1>My cart</h1>
+    <div class="cart-page">
+      <CartList />
+      <CartSummary />
+    </div>
   </div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+@import "styles";
+</style>
