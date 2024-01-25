@@ -1,5 +1,10 @@
 export type TVariantLabel = { attribute_id: string; label_id: string };
 
+export enum EAttributeType {
+  COLOR = "COLOR",
+  TEXT = "TEXT",
+}
+
 export type TVariant = {
   id: string;
   title: string;

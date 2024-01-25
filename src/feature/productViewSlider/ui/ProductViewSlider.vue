@@ -1,14 +1,12 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { useStore } from "effector-vue/composition";
 
-import { TheDots } from "@/feature/productViewSlider";
+import { type TProduct } from "@/entities/product";
+import { $activeIndex, setActive, TheDots } from "@/feature/productViewSlider";
 import { getImageByUrl } from "@/shared/api";
 
-defineProps<{ images: { title: string; url: string }[] }>();
-const active = ref(0);
-const setActive = (index: number) => {
-  active.value = index;
-};
+const { product } = defineProps<{ product: TProduct }>();
+const active = useStore($activeIndex);
 </script>
 
 <template>
@@ -19,14 +17,14 @@ const setActive = (index: number) => {
         mode="out-in"
       >
         <img
-          :src="getImageByUrl(images[active].url)"
-          :alt="images[active].title"
+          :src="getImageByUrl(product.images[active].url)"
+          :alt="product.images[active].title"
           :key="active"
         />
       </transition>
     </div>
     <TheDots
-      :dots-length="images.length"
+      :dots-length="product.images.length"
       :active-dot="active"
       @setActiveDot="setActive"
     />

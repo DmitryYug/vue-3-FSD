@@ -2,12 +2,9 @@
 import type { TCartItem } from "@/entities/cart";
 import { getImageByUrl } from "@/shared/api";
 import { DotIcon } from "@/shared/assets";
+import { getColorFromImageTitle } from "@/shared/lib";
 
 defineProps<{ cartItem: TCartItem }>();
-const getColorFromImageTitle = (title: string) => {
-  const dotIndex = title.lastIndexOf(".");
-  return dotIndex !== -1 ? title.substring(0, dotIndex) : title;
-};
 </script>
 
 <template>

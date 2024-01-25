@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted } from "vue";
-import { useRouter } from "vue-router";
+import { onUnmounted } from "vue";
 import { useStore } from "effector-vue/composition";
 
 import {
   $chosenVariant,
   $product,
-  getProductInfo,
   setChosenAttribute,
   setChosenLabel,
   setQuantity,
@@ -16,19 +14,13 @@ import { ProductViewControls } from "@/feature/productViewControls";
 import { ProductViewSlider } from "@/feature/productViewSlider";
 import { Badge } from "@/shared/ui";
 
-const { currentRoute } = useRouter();
-
-onMounted(() => {
-  const id = currentRoute.value.params.id;
-  if (id) {
-    getProductInfo(id as string);
-  }
-});
 onUnmounted(() => {
   clearData();
 });
+
 const product = useStore($product);
 const chosenVariant = useStore($chosenVariant);
+
 const clearData = () => {
   setChosenAttribute(null);
   setChosenLabel(null);
@@ -43,7 +35,7 @@ const clearData = () => {
     v-if="product"
   >
     <div>
-      <ProductViewSlider :images="product.images" />
+      <ProductViewSlider :product="product" />
     </div>
     <div class="product-view-description">
       <Badge :badge-text="product.discount_price || 'NEW'" />
