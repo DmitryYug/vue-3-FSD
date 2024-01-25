@@ -26,6 +26,5 @@ export const computeAvailableVariants = (product: TProduct | null, chosenLabel: 
       }
     });
   }
-  console.log({ res });
   return res;
 };

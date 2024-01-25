@@ -3,7 +3,7 @@ defineProps<{ badgeText: string; size?: "small"; isOpacity?: boolean }>();
 </script>
 
 <template>
-  <div :class="`badge ${size} ${isOpacity && 'opacity'}`">
+  <div :class="`badge ${size} ${!isOpacity && 'opacity'}`">
     {{ badgeText }}
   </div>
 </template>

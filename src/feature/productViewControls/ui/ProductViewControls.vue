@@ -9,8 +9,10 @@ import {
   $availableVariants,
   $chosenAttribute,
   $chosenLabel,
+  $labelIdsForVariantCheck,
   setChosenAttribute,
   setChosenLabel,
+  setLabelIdForVariantCheck,
 } from "@/widgets/productView";
 
 const { product } = defineProps<{ product: TProduct }>();
@@ -18,6 +20,7 @@ const { product } = defineProps<{ product: TProduct }>();
 const chosenLabel = useStore($chosenLabel);
 const chosenAttribute = useStore($chosenAttribute);
 const availableVariants = useStore($availableVariants);
+const labelIdsForVariantCheck = useStore($labelIdsForVariantCheck);
 </script>
 
 <template>
@@ -36,8 +39,8 @@ const availableVariants = useStore($availableVariants);
           :placeholder="`Select ${attribute.title}`"
           @change="
             (event: DropdownChangeEvent) => {
-              setChosenLabel(event.value);
               setChosenAttribute(attribute);
+              setChosenLabel(event.value);
             }
           "
         />
@@ -45,8 +48,8 @@ const availableVariants = useStore($availableVariants);
           v-if="chosenAttribute"
           @click="
             () => {
-              setChosenLabel(null);
               setChosenAttribute(null);
+              setChosenLabel(null);
             }
           "
         >
@@ -58,15 +61,19 @@ const availableVariants = useStore($availableVariants);
         class="variants-wrapper"
       >
         <button
-          v-for="availableAttribute in attribute.labels.filter(
+          v-for="availableLabel in attribute.labels.filter(
             label => availableVariants && availableVariants[attribute.id].includes(label.id)
           )"
-          :key="availableAttribute.title"
+          :key="availableLabel.title"
+          @click="() => setLabelIdForVariantCheck({ attributeId: attribute.id, labelId: availableLabel.id })"
         >
           <Badge
+            v-if="labelIdsForVariantCheck"
             size="small"
-            :badge-text="availableAttribute.title"
-            is-opacity
+            :badge-text="availableLabel.title"
+            :is-opacity="
+              chosenLabel.id === availableLabel.id || labelIdsForVariantCheck[attribute.id] === availableLabel.id
+            "
           />
         </button>
       </div>
