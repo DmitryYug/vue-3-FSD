@@ -4,6 +4,7 @@ import type { TCartItem } from "@/entities/cart";
 import { $cartItems } from "@/widgets/cartItems";
 
 export const setSummary = createEvent<TCartItem[] | null>();
+export const updateValues = createEvent<TCartItem[]>();
 
 export const $totalQuantity = createStore<number | null>(null);
 export const $totalPrice = createStore<number | null>(null);
@@ -18,6 +19,6 @@ sample({
 
 sample({
   clock: setSummary,
-  fn: cartItems => cartItems && cartItems.reduce((acc, val) => acc + val.total_price, 0),
+  fn: cartItems => cartItems && cartItems.reduce((acc, val) => acc + val.product_list_price * val.quantity, 0),
   target: $totalPrice,
 });

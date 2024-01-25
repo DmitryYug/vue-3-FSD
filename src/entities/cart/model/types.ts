@@ -5,7 +5,7 @@ export type TCartItem = {
   name: string;
   price: number;
   product_id: string;
-  product_list_price: string;
+  product_list_price: number;
   product_type: string;
   quantity: number;
   total_price: number;
