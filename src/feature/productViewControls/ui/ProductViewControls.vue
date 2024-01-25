@@ -3,8 +3,6 @@ import { useStore } from "effector-vue/composition";
 import type { DropdownChangeEvent } from "primevue/dropdown";
 
 import { type TProduct } from "@/entities/product";
-import { DeleteIcon } from "@/shared/assets";
-import { Badge, QuantityInput, TheButton } from "@/shared/ui";
 import {
   $availableVariants,
   $chosenAttribute,
@@ -17,7 +15,9 @@ import {
   setChosenLabel,
   setLabelIdForVariantCheck,
   setQuantity,
-} from "@/widgets/productView";
+} from "@/entities/product";
+import { DeleteIcon } from "@/shared/assets";
+import { Badge, QuantityInput, TheButton } from "@/shared/ui";
 
 const { product, clearData } = defineProps<{ product: TProduct; clearData: () => void }>();
 
@@ -37,11 +37,11 @@ const quantity = useStore($quantity);
     >
       <div class="controls-item">
         <Dropdown
+          show-clear
           panel-class="dropdown-panel"
           optionLabel="title"
           :model-value="chosenLabel"
           :options="attribute.labels"
-          :disabled="!!chosenLabel"
           :placeholder="`Select ${attribute.title}`"
           @change="
             (event: DropdownChangeEvent) => {

@@ -1,7 +1,7 @@
 import { createStore } from "effector";
 
 import type { TCartItem } from "@/entities/cart";
-import { addToCartFx } from "@/widgets/productView";
+import { addToCartFx } from "@/entities/product";
 
 export const $cartItems = createStore<TCartItem[] | null>(null);
 

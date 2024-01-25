@@ -1,15 +1,15 @@
 import { createEffect, createEvent, createStore, sample } from "effector";
 
 import type { TAttribute, TAttributeLabel, TProduct, TVariant } from "@/entities/product";
-import { addProductToCart, getProductByIdApi } from "@/widgets/productView/api/productViewApi";
-import { computeAvailableVariants } from "@/widgets/productView/lib/computeAvailableVariants";
-import { computeVariant } from "@/widgets/productView/lib/computeVariant";
+
+import { addProductToCartApi, getProductByIdApi } from "../api";
+import { computeAvailableVariants, computeVariant } from "../lib";
 
 export const getProductInfoFx = createEffect((id: string) => getProductByIdApi(id));
 export const addToCartFx = createEffect((payload: { variantId: string; quantity: number } | null) => {
   if (payload) {
     const { variantId, quantity } = payload;
-    return addProductToCart(variantId, quantity);
+    return addProductToCartApi(variantId, quantity);
   }
 });
 export const getProductInfo = createEvent<string>();

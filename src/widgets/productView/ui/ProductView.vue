@@ -3,9 +3,6 @@ import { onMounted, onUnmounted } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "effector-vue/composition";
 
-import { ProductViewControls } from "@/feature/productViewControls";
-import { ProductViewSlider } from "@/feature/productViewSlider";
-import { Badge } from "@/shared/ui";
 import {
   $chosenVariant,
   $product,
@@ -14,7 +11,10 @@ import {
   setChosenLabel,
   setQuantity,
   setVariant,
-} from "@/widgets/productView/model";
+} from "@/entities/product";
+import { ProductViewControls } from "@/feature/productViewControls";
+import { ProductViewSlider } from "@/feature/productViewSlider";
+import { Badge } from "@/shared/ui";
 
 const { currentRoute } = useRouter();
 
