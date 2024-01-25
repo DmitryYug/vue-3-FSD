@@ -15,9 +15,12 @@ const isScreenTablet = computed(() => {
 <template>
   <div class="header-container">
     <BurgerIcon v-if="isScreenTablet" />
-    <div class="logo">
+    <router-link
+      to="/"
+      class="logo"
+    >
       <LogoIcon :view="isScreenTablet ? 's' : 'l'" />
-    </div>
+    </router-link>
     <div class="navbar">
       <router-link
         to="/"
