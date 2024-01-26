@@ -7,6 +7,9 @@
 
 ### Starting project locally on port 8080
 ~~~ 
+npm install
+~~~
+~~~ 
 vite --port 8080
 ~~~
 
