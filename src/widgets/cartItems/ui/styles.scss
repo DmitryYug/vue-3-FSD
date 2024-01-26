@@ -2,11 +2,18 @@
 
 .list {
   width: 100%;
+  padding: 20px;
+  @media screen and (max-width: $tablet) {
+    padding: 5px;
+  }
 }
 
 .list-item {
   display: flex;
   gap: 32px;
+  @media screen and (max-width: $tablet) {
+   gap: 16px;
+  }
   .img-container {
     border-radius: 6px;
     img {
@@ -44,6 +51,9 @@
   gap: 20px;
   height: 60vh;
   flex-direction: column;
+  @media screen and (max-width: $tablet) {
+    height: 40vh;
+  }
   h2 {
     font-size: 28px;
     text-align: center;
@@ -58,7 +68,10 @@ th {
   font-size: 18px;
   font-weight: 400;
   line-height: 27px;
-  color: var(--col-grey)
+  color: var(--col-grey);
+  @media screen and (max-width: $tablet) {
+    font-size: 14px;
+  }
 }
 
 table {

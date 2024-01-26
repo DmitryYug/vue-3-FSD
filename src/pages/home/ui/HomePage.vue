@@ -15,6 +15,6 @@ import { ProductList } from "@/widgets/productList";
   </main>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "styles";
 </style>

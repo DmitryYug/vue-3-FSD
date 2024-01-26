@@ -1,27 +1,35 @@
 <script setup lang="ts">
+import { onUnmounted } from "vue";
 import { useStore } from "effector-vue/composition";
 
-import { $product } from "@/entities/product";
+import { $apiError, $product, setError } from "@/entities/product";
 import { $chosenVariant, ProductViewControls } from "@/feature/productViewControls";
 import { ProductViewSlider } from "@/feature/productViewSlider";
 import { Badge } from "@/shared/ui";
 
+onUnmounted(() => {
+  setError(false);
+});
+
 const product = useStore($product);
 const chosenVariant = useStore($chosenVariant);
+const error = useStore($apiError);
 </script>
 
 <template>
   <div
     class="product-view"
-    v-if="product"
+    v-if="product && !error"
   >
-    <div>
-      <ProductViewSlider :product="product" />
-    </div>
+    <ProductViewSlider :product="product" />
     <div class="product-view-description">
-      <Badge :badge-text="product.discount_price || 'NEW'" />
-      <span class="bold-text">{{ chosenVariant ? chosenVariant.title : product.title }}</span>
-      <span class="bold-text"
+      <Badge
+        v-if="product.direct_sale.is_direct"
+        :badge-text="product.discount_price || 'SALE'"
+        is-opacity
+      />
+      <span class="bold-text title">{{ chosenVariant ? chosenVariant.title : product.title }}</span>
+      <span class="bold-text price"
         >${{ chosenVariant ? Math.floor(chosenVariant.price) : Math.floor(product.max_price) }}</span
       >
       <p class="text">
@@ -29,6 +37,9 @@ const chosenVariant = useStore($chosenVariant);
       </p>
       <ProductViewControls :product="product" />
     </div>
+  </div>
+  <div v-if="error">
+    <h2>Oops... smth went wrong</h2>
   </div>
 </template>
 

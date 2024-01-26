@@ -1,13 +1,21 @@
 <script setup lang="ts">
+import { computed } from "vue";
 import { useStore } from "effector-vue/composition";
 
 import { CartIcon, DeleteIcon } from "@/shared/assets";
+import { TABLET_WIDTH } from "@/shared/constants";
+import { useScreenWidth } from "@/shared/lib";
 import { QuantityInput } from "@/shared/ui";
 import { $cartItems, changeQuantity, deleteItem } from "@/widgets/cartItems";
 
 import ProductTableItem from "./ProductTableItem.vue";
 
 const cartItems = useStore($cartItems);
+const { screenWidth } = useScreenWidth();
+
+const isScreenTablet = computed(() => {
+  return screenWidth.value <= TABLET_WIDTH;
+});
 </script>
 <template>
   <div class="list">
@@ -47,8 +55,8 @@ const cartItems = useStore($cartItems);
       v-else
     >
       <CartIcon
-        :height="200"
-        :width="200"
+        :height="isScreenTablet ? 160 : 80"
+        :width="isScreenTablet ? 160 : 80"
       />
       <h2 class="bold-text">Card is empty</h2>
     </div>

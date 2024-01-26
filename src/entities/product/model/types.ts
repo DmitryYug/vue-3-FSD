@@ -32,6 +32,7 @@ export type TProduct = {
   description: string;
   images: { title: string; url: string }[];
   discount_price: number;
+  direct_sale: { is_direct: boolean; type: string };
   min_price: number;
   max_price: number;
   variants: TVariant[];

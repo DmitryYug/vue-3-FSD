@@ -1,3 +1,5 @@
+@import '@/app/styles/index.scss';
+
 .summary {
   display: flex;
   flex-direction: column;
@@ -23,5 +25,25 @@
         background-color: var(--col-grey);
       }
     }
+  }
+  @media screen and (max-width: $tablet) {
+    background-color: #FFFFFF !important;
+    border-radius: 50px;
+    padding: 20px;
+    width: 100%
+  }
+}
+
+.checkout {
+  background-color: var(--col-blue);
+  font-size: 18px;
+  color: var(--col-white);
+  line-height: 27px;
+  padding: 12px 24px;
+  border-radius: 50px;
+  width: fit-content;
+  &:disabled {
+    background-color: var(--col-grey-medium);
+    cursor: not-allowed;
   }
 }

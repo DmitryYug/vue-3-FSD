@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import { useStore } from "effector-vue/composition";
 
-import { TheButton } from "@/shared/ui";
-import { $cartItems } from "@/widgets/cartItems";
-import { $totalPrice, $totalQuantity, updateValues } from "@/widgets/cartSummary/model/cartSummaryModel";
+import { $totalPrice, $totalQuantity } from "@/widgets/cartSummary/model/cartSummaryModel";
 
 const totalQuantity = useStore($totalQuantity);
 const totalPrice = useStore($totalPrice);
-const cartItems = useStore($cartItems);
 </script>
 
 <template>
@@ -24,10 +21,7 @@ const cartItems = useStore($cartItems);
       <span class="bold-text">Total</span>
       <span class="bold-text">$ {{ totalPrice || 0 }}</span>
     </div>
-    <TheButton
-      title="Checkout"
-      :on-click="() => updateValues(cartItems)"
-    />
+    <button class="checkout">Checkout</button>
   </div>
 </template>
 

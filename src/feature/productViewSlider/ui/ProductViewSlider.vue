@@ -30,7 +30,10 @@ const noImageMessage = computed(() => {
         />
       </transition>
     </div>
-    <span class="error">
+    <span
+      class="error"
+      v-if="noImageMessage"
+    >
       {{ noImageMessage }}
     </span>
     <TheDots

@@ -1,5 +1,17 @@
+@import '@/app/styles/index.scss';
+
 .cart-page {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: $tablet) {
+    flex-direction: column;
+    gap: 20px
+  }
+  &-wrapper {
+    padding: 50px;
+    @media screen and (max-width: $tablet) {
+      padding: 0;
+    }
+  }
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-import { CartIcon, LogoIcon } from "@/shared/assets";
+import { CartIconWithBadge, LogoIcon } from "@/shared/assets";
 import { BurgerIcon } from "@/shared/assets/svg/BurgerIcon";
 import { TABLET_WIDTH } from "@/shared/constants";
 import { useScreenWidth } from "@/shared/lib";
@@ -29,9 +29,9 @@ const isScreenTablet = computed(() => {
         Home
       </router-link>
       <router-link to="/cart">
-        <CartIcon
-          :height="17"
-          :width="22"
+        <CartIconWithBadge
+          :height="32"
+          :width="32"
         />
       </router-link>
     </div>

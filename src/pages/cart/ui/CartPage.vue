@@ -4,7 +4,7 @@ import { CartSummary } from "@/widgets/cartSummary";
 </script>
 
 <template>
-  <div>
+  <div class="cart-page-wrapper">
     <h1>My cart</h1>
     <div class="cart-page">
       <CartList />
