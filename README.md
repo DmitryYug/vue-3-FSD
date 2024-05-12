@@ -1,4 +1,4 @@
-# Bylith-home-assignment
+# vue-3 +FSD
 
 - Vue 3 project structure is developed with FSD methodology (https://feature-sliced.design/) 
 - Styles are made with SCSS with global files in app/styles and scoped classes if styles.scss files
@@ -12,7 +12,3 @@ npm install
 ~~~ 
 vite --port 8080
 ~~~
-
-#### Thanks for the review and your time. Hope to hear from you soon
-#### Sincerely Dmitriy Yuganyuk https://dmitryyug.github.io/portfolio/
-
